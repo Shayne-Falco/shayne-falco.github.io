@@ -87,11 +87,11 @@ end
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-4 col-12-small">
+										<div class="col-3 col-12-small">
 											<h3>Random Parameter Search</h3>
-											<p>To find many parameter sets that fit our model to our <i>in vivo</i> data, we implemented a random search with the given scheme. </p>
+											<p>To find many parameter sets that fit our model to our <i>in vivo</i> data, we implemented a random search with the given scheme. With these parameter sets we will be able to identify the mechanisms that persist in all of these sets. </p>
 										</div>
-										<div class="col-8 col-12-small">
+										<div class="col-9 col-12-small">
 											<pre><code>%Code snippet showing the random parameter search. 
 %Not all parameters are initialized here and not all functions are shown 
 array=[a_1 a_2 a_3 a_4 a_5 a_6 a_7 n1 n2]; % random array of parameters is established
@@ -111,6 +111,19 @@ While Distance < Cuttoff
       save2file(array,Distance,iterationNum) 
     end
 end</code></pre>									
+										</div>
+									</div>
+
+									<hr class="major" />
+									<h2>Analysis of Parameter Sets</h2>
+									<div class="row">
+										<div class="col-4 col-12-small">
+											<span class="image main"><img src="images/ParameterSets.jpg" alt="" /></span>
+										</div>
+										<div class="col-8 col-12-small">
+											<p>We were able to find 100 parameter sets that produce simulated curves that were within a small error of our biological data. An analysis of these parameter sets showed that there is a very high level of regulation of the dynamics in the cytoplasm. Further, in the centrosomes we see that the cooperativity, self-recruitment, was significantly different. Namely, 60% of the cooperativity terms in the leading compartment were higher than the corresponding cooperativity in the lagging.</p>
+											<h2>Final Takeaways</h2>
+											<p>This work has shown that the centrosomes are not identical during maturation, while they are being positioned. Previous results from the lab have shown that the MT arrays nucleated from the centrosomes are also asymmetric. Future work will need to be done to discover the cause of the asymmetry because our results indicate that AIR-1 itself is not the cause of the asymmetry, but that it has an asymmetry caused by another factor.</p>
 										</div>
 									</div>
 								</section>
