@@ -105,7 +105,7 @@ While Distance < Cuttoff
     NewArray = mmh(array); %Randomly perturbs all of the elements in the input array
     [~,y1] = ode15s(@(t,y0Lead)ODE_DL_FRAP_Dynamic(t,array,y0Lead),[time-deltaT,time],y0);
     DistanceNew = SumAbsDiff(y1,inVivoData);
-    if Distance < DistanceNew
+    if DistanceNew < Distance
         Distance = DistanceNew;
         array = NewArray
         save2file(array,Distance,iterationNum) 
