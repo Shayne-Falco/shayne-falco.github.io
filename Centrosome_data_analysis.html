@@ -54,9 +54,9 @@ import seaborn as sns</code></pre>
 									<h3>Did the random search used have an impact on the resulting parameter set?</h3>
 									<p>Load the data</p>
 									<p>We used three different random searches denoted by "mmh1", "mmh2", and "mmh3". These were stored separately.</p>
-										<pre><code>df = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh1/params.dat', names = ["a1", "a2","a3","a4","a5","a6","a7","n1","n2","t_half","v_max","mmh1"])
-df1 = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh2/params.dat', names = ["a1", "a2","a3","a4","a5","a6","a7","n1","n2","t_half","v_max","mmh2"])
-df2 = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh3/params.dat', names = ["a1", "a2","a3","a4","a5","a6","a7","n1","n2","t_half","v_max","mmh3"])
+										<pre><code>df = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh1/params.dat')
+df1 = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh2/params.dat')
+df2 = pd.read_table('GRACE/PAPER/Paper_Data/Hists/FitFRAP_mmh3/params.dat')
 params = pd.concat([df, df1, df2])
 params = params.fillna(0)</code></pre>
 									<p>Combine to a single DataFrame and store catagory as single column</p>
@@ -69,8 +69,8 @@ params["mmh1"] = params["mmh1"].astype(int)</code></pre>
 									<h3>What is the correlation in the parameters?</h3>
 									<p>Plot the correlation matrices and color by random search type</p>
 									<pre><code>sns.pairplot(params, ## put the data frame here
-	y_vars = ["n1","n2"], ## put a list of the desired vertical variables here
-	x_vars = ["a1","a2","a4","a5","n1","n2","t_half","v_max","n1-n2"], ## put a list of the desired horizontal variables here
+	y_vars = ["t_half","v_max","n1-n2","n1","n2"], 
+	x_vars = ["a1","a2","a4_log","a5_log","n1","n2"], 
 	height = 5,
 	hue="mmh1")
 						
@@ -85,13 +85,13 @@ params['a5_log'] = params['a5'].apply(np.log10)</code></pre>
 									
 									<p>Plot the correlation matrices and color by random search type</p>
 									<pre><code>sns.pairplot(params_trimmed, ## put the data frame here
-	y_vars = ["n2","n1"], ## put a list of the desired vertical variables here
-	x_vars = ["a1","a2","a4_log","a5_log","n1","n2","t_half","v_max","n1-n2"], ## put a list of the desired horizontal variables here
+	y_vars = ["t_half","v_max","n1-n2","n1","n2"], 
+	x_vars = ["a1","a2","a4_log","a5_log","n1","n2"], 
 	height = 5,
 	kind="reg")
 sns.set(font_scale=2)
 plt.show()</code></pre>
-									<span class="image main"><img src="images/secondAnalysis.png" alt="" /></span>
+									<span class="image main"><img src="images/secondAnalysis.png" alt="" /><image style="max-width: 100px;"></image></span>
 									<hr class="major" />
 									<h1>Conclusions</h1>
 									<h2>The type of random search had no influence on the parameter sets produces</h2>
